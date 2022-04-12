@@ -1,0 +1,48 @@
+mencari data secara langsung
+SELECT * FROM `tb_pengurutan` WHERE harga_barang IN (3000, 5000)
+
+mencari data diantara
+SELECT * FROM `tb_pengurutan` WHERE harga_barang BETWEEN 3000 AND 5000
+
+mencari kata dari huruf depan
+SELECT * FROM `tb_pengurutan` WHERE nama_barang LIKE 'sa%'
+
+mencari kata dari huruf belakang
+SELECT * FROM `tb_pengurutan` WHERE nama_barang LIKE '%o%'
+
+mencari data dari belakang
+SELECT * FROM `tb_pengurutan` WHERE nama_barang LIKE '%o'
+
+expresi query
+SELECT nama_barang as 'nama barang' FROM `tb_pengurutan`
+
+fungsi waktu
+SELECT CURRENT_DATE AS 'Tanggal Hari Ini'
+SELECT CURRENT_TIME AS 'Waktu Sekarang
+
+dari kecil ke besar
+SELECT * FROM tb_kariyawan INNER JOIN gaji_kariyawan ON tb_kariyawan.id_kariyawan=gaji_kariyawan.id_kariyawan ORDER BY gaji_kariyawan.pokok ASC
+
+SELECT * FROM `tb_kariyawan`LEFT JOIN gaji_kariyawan ON tb_kariyawan.id_kariyawan=gaji_kariyawan.id_kariyawan
+SELECT * FROM `tb_kariyawan`RIGHT JOIN gaji_kariyawan ON tb_kariyawan.id_kariyawan=gaji_kariyawan.id_kariyawan
+
+SELECT * FROM `tb_mhs UPDATE `tb_mhs` SET `nama` = 'pres diki' WHERE `tb_mhs`.`id` = 2;
+
+if
+SELECT npm, nama, nilai, IF (nilai = 70, "Lulus", "Tidak Lulus") AS keterangan FROM tb_mhs
+
+SELECT npm, nama, nilai, IF (nilai = 90, "Lulus",
+IF (nilai = 85, "Lulus", "Tidak Lulus")) AS keterangan
+FROM tb_mhs
+
+SELECT npm, nama, nilai, IF (nilai = 90 || nilai = 85 || nilai = 80 || nilai = 75, "Lulus", "Tidak Lulus") AS keterangan FROM tb_mhs
+
+SELECT npm, nama, nilai, IF (nilai >= 75, "Lulus", "Tidak Lulus") AS keterangan FROM tb_mhs
+
+SELECT npm, nama, nilai, 
+IF (nilai >= 80, "A",
+	IF (nilai >= 70 && nilai < 80, "B",
+		IF (nilai >= 60 && nilai < 70,"C",
+			IF (nilai >= 50, "D", "E"))))
+AS grade,
+IF (nilai > 60, "Lulus", "Tidak Lulus") AS keterangan FROM tb_mhs
